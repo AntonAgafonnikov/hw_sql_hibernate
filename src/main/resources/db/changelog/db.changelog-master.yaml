@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: migration/CreateTablePersons.sql
+      relativeToChangeLogFile: true
+  - include:
+      file: migration/InsertTablePersons.sql
+      relativeToChangeLogFile: true
