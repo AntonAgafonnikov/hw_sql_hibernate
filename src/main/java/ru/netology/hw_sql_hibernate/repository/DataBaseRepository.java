@@ -1,19 +1,17 @@
 package ru.netology.hw_sql_hibernate.repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import org.hibernate.sql.ast.tree.expression.JdbcParameter;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import ru.netology.hw_sql_hibernate.model.Person;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class DataBaseRepository {
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    public List<String> getPersonsByCity(String city) {
-        String hql = "select name from PERSONS where city_of_living = '" + city + "'";
-        var query = entityManager.createNativeQuery(hql);
-        return query.getResultList();
-    }
+public interface DataBaseRepository extends JpaRepository<Person, Long> {
+    List<Person> findByCity(String city);
+    List<Person> findByAgeLessThanOrderByAgeAsc(int age);
+    Optional<List<Person>> findByNameAndSurname(String name, String surname);
 }
