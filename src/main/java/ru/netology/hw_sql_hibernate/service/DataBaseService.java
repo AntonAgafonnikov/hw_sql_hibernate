@@ -23,7 +23,7 @@ public class DataBaseService {
     public List<Person> getPersonsByAge(int age) {
         return dataBaseRepository.findByAgeLessThanOrderByAgeAsc(age);
     }
-    public Optional<List<Person>> getPersonsByNameAndSurname(String name, String surname) {
+    public Optional<Person> getPersonsByNameAndSurname(String name, String surname) {
         return dataBaseRepository.findByNameAndSurname(name, surname);
     }
 }

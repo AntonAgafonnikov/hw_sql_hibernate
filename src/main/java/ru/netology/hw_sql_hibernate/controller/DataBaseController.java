@@ -28,7 +28,7 @@ public class DataBaseController {
     }
 
     @GetMapping("/persons/by-name-and-surname")
-    public Optional<List<Person>> getPersonsByNameAndSurname(@RequestParam("name") String name,
+    public Optional<Person> getPersonsByNameAndSurname(@RequestParam("name") String name,
                                                    @RequestParam("surname") String surname) {
         return dataBaseService.getPersonsByNameAndSurname(name, surname);
     }
